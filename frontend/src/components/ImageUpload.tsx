@@ -27,7 +27,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange, label }) => 
             const res = await api.post('/upload/image', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            const fullUrl = `http://localhost:5000${res.data.imageUrl}`;
+            const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+            const staticBase = apiBase.replace(/\/api$/, '');
+            const fullUrl = `${staticBase}${res.data.imageUrl}`;
             onChange(fullUrl);
         } catch (err) {
             console.error('Upload error:', err);
