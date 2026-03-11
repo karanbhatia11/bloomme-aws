@@ -1,11 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Truck, Package, Mail, MapPin, ChevronRight, Flower2, Sparkles, Heart } from 'lucide-react';
 import api from '../api/axios';
+import SiteStatusModal from '../components/SiteStatusModal';
+import { getSiteStatus, getPlans } from '../api/config';
 
 const Home = () => {
     const [newsletterEmail, setNewsletterEmail] = useState('');
     const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success' | 'error' | 'loading'>('idle');
+    const [siteStatus, setSiteStatus] = useState<'coming_soon' | 'maintenance' | 'none'>('none');
+    const [plans, setPlans] = useState<any[]>([]);
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const status = await getSiteStatus();
+            const plansData = await getPlans();
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+            setSiteStatus(user?.role === 'admin' ? 'none' : status.mode);
+            setPlans(plansData);
+        };
+        fetchData();
+    }, []);
 
     const handleNewsletterSubmit = async () => {
         if (!newsletterEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) {
@@ -22,17 +39,15 @@ const Home = () => {
         }
     };
 
+    const handleEntryClick = (e: React.MouseEvent) => {
+        if (isComingSoon) {
+            e.preventDefault();
+            setShowModal(true);
+        }
+    };
+
     return (
         <div className="home">
-            {/* STICKY NAV */}
-            <nav className="nav-sticky">
-                <Link to="/" className="logo"><img src="/images/logo.jpeg" alt="Bloomme" /></Link>
-                <div className="nav-links">
-                    <Link to="/login" style={{ textDecoration: 'none', color: 'var(--text-dark)', fontWeight: 600 }}>Login</Link>
-                    <Link to="/signup" className="btn" style={{ padding: '10px 25px' }}>Join Now</Link>
-                </div>
-            </nav>
-
             {/* HERO SECTION */}
             <header className="hero">
                 <div className="hero-content fade-in">
@@ -40,7 +55,7 @@ const Home = () => {
                     <h1>Daily Puja Flowers Delivered Fresh</h1>
                     <p>Experience the divine essence of hand-picked, traditional Indian flowers delivered to your home every morning before your sunrise prayers.</p>
                     <div className="hero-price-badge">
-                        Monthly Subscriptions Starting ₹1499
+                        Monthly Subscriptions Starting ₹49 /day
                     </div>
                     <Link to="/signup" className="btn btn-gold">
                         Start Your Subscription <ChevronRight size={20} />
@@ -111,56 +126,31 @@ const Home = () => {
             </section>
 
             {/* SUBSCRIPTION PLANS */}
-            <section className="section section-beige">
+            <section className="section section-beige" id="subscriptions">
                 <h2>Choose Your Subscription</h2>
                 <div className="grid">
-                    <div className="card">
-                        <img src="/images/basic.png" alt="Basic" className="plan-img" loading="lazy" />
-                        <div className="card-content">
-                            <div className="tagline">Traditional</div>
-                            <h3 style={{ fontSize: '2rem', margin: '0.5rem 0' }}>BASIC</h3>
-                            <ul style={{ textAlign: 'left', marginBottom: '1.5rem', listStyle: 'none', padding: 0 }}>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Flower2 size={18} /> 60–100g Marigold Variety</li>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Sparkles size={18} /> Daily Puja Essentials</li>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Truck size={18} /> Eco Paper Bag Delivery</li>
-                            </ul>
-                            <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>₹1499/mo</div>
-                            <Link to="/signup" className="btn" style={{ width: '100%' }}>View Plan</Link>
+                    {plans.map((plan) => (
+                        <div key={plan.id} className={`card ${plan.is_popular ? 'plans-premium-card' : ''}`}>
+                            {plan.is_popular && <div className="popular-tag">MOST SACRED</div>}
+                            <img src={plan.image_url} alt={plan.name} className="plan-img" loading="lazy" />
+                            <div className="card-content">
+                                <div className="tagline">{plan.tagline}</div>
+                                <h3 style={{ fontSize: '2rem', margin: '0.5rem 0' }}>{plan.name}</h3>
+                                <ul style={{ textAlign: 'left', marginBottom: '1.5rem', listStyle: 'none', padding: 0 }}>
+                                    {(Array.isArray(plan.features) ? plan.features : []).map((feature: string, idx: number) => (
+                                        <li key={idx} style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
+                                            <Flower2 size={18} /> {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>₹{plan.price}/mo</div>
+                                <Link to="/signup" className={`btn ${plan.is_popular ? 'btn-gold' : ''}`} style={{ width: '100%' }}>View Plan</Link>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="card plans-premium-card">
-                        <div style={{ position: 'absolute', top: 0, right: 0, background: 'var(--light-gold)', color: 'white', padding: '5px 20px', borderRadius: '0 0 0 20px', fontSize: '0.8rem', fontWeight: 'bold', zIndex: 10 }}>MOST SACRED</div>
-                        <img src="/images/premium.png" alt="Premium" className="plan-img" loading="lazy" />
-                        <div className="card-content">
-                            <div className="tagline">Divine</div>
-                            <h3 style={{ fontSize: '2rem', margin: '0.5rem 0' }}>PREMIUM</h3>
-                            <ul style={{ textAlign: 'left', marginBottom: '1.5rem', listStyle: 'none', padding: 0 }}>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Flower2 size={18} /> 150g Rose & Marigold Pack</li>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Sparkles size={18} /> Mixed Ritual Variety</li>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Package size={18} /> Signature Bloomme Box</li>
-                            </ul>
-                            <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>₹2699/mo</div>
-                            <Link to="/signup" className="btn btn-gold" style={{ width: '100%' }}>View Plan</Link>
-                        </div>
-                    </div>
-
-                    <div className="card">
-                        <img src="/images/elite.png" alt="Elite" className="plan-img" loading="lazy" />
-                        <div className="card-content">
-                            <div className="tagline">Celestial</div>
-                            <h3 style={{ fontSize: '2rem', margin: '0.5rem 0' }}>ELITE</h3>
-                            <ul style={{ textAlign: 'left', marginBottom: '1.5rem', listStyle: 'none', padding: 0 }}>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Flower2 size={18} /> 200g Lotus & Exotic Mix</li>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Sparkles size={18} /> Seasonal Sacred Specialities</li>
-                                <li style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}><Heart size={18} /> Luxury Hand-Sorted Purity</li>
-                            </ul>
-                            <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>₹4499/mo</div>
-                            <Link to="/signup" className="btn" style={{ width: '100%' }}>View Plan</Link>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
+            <SiteStatusModal isOpen={showModal} onClose={() => setShowModal(false)} status={siteStatus} />
 
             {/* ADD-ONS PREVIEW */}
             <section className="section section-beige">

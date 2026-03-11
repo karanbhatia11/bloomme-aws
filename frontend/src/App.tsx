@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -12,11 +12,14 @@ import Dashboard from './pages/Dashboard';
 import AdminPanel from './pages/AdminPanel';
 import Legal from './pages/Legal';
 import SiteFooter from './components/SiteFooter';
+import SiteHeader from './components/SiteHeader';
 import './styles/App.css';
 
 const AdminRoute = ({ children }: { children: React.ReactNode }) => {
   const user = JSON.parse(localStorage.getItem('user') || 'null');
-  if (!user) return <Navigate to="/login" replace />;
+  const location = useLocation();
+
+  if (!user) return <Navigate to="/login" state={{ from: location }} replace />;
   if (user.role !== 'admin') return <Navigate to="/dashboard" replace />;
   return <>{children}</>;
 };
@@ -25,6 +28,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <SiteHeader />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

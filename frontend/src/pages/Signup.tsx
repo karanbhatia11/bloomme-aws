@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api/axios';
+import SiteStatusModal from '../components/SiteStatusModal';
 
 const Signup = () => {
     const [formData, setFormData] = useState({ name: '', phone: '', email: '', password: '' });
+    const [status, setStatus] = useState<'coming_soon' | 'maintenance' | 'none'>('none');
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             const res = await api.post('/auth/signup', formData);
+
+            if (res.data.coming_soon || res.data.maintenance) {
+                setStatus(res.data.coming_soon ? 'coming_soon' : 'maintenance');
+                setShowModal(true);
+                return;
+            }
+
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             navigate('/plans');
         } catch (err: any) {
-            const msg = err?.response?.data?.error || 'Error signing up. Please try again.';
-            alert(msg);
+            console.error('Frontend Signup Error:', err);
+            const backendMsg = err?.response?.data?.error || err?.response?.data?.message;
+            alert(backendMsg || err.message || 'Error signing up. Please try again.');
         }
     };
 
@@ -44,6 +55,7 @@ const Signup = () => {
                 </form>
                 <p style={{ marginTop: '1rem' }}>Already have an account? <Link to="/login" style={{ color: 'var(--primary-green)', fontWeight: 600 }}>Login</Link></p>
             </div>
+            <SiteStatusModal isOpen={showModal} onClose={() => setShowModal(false)} status={status} />
         </div>
     );
 };

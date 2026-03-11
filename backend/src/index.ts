@@ -6,6 +6,10 @@ import authRoutes from './routes/auth';
 import subRoutes from './routes/subscriptions';
 import userRoutes from './routes/user';
 import newsletterRoutes from './routes/newsletter';
+import configRoutes from './routes/config';
+import adminRoutes from './routes/admin';
+import uploadRoutes from './routes/upload';
+import path from 'path';
 
 dotenv.config();
 
@@ -22,6 +26,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/subs', subRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/newsletter', newsletterRoutes);
+app.use('/api/config', configRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/upload', uploadRoutes);
+
+// Serving uploaded files
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.get('/', (req: Request, res: Response) => {
     res.send('BLOOMME Backend is running!');
