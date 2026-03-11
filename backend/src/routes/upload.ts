@@ -45,7 +45,7 @@ router.post('/image', authenticateToken, authorizeAdmin, upload.single('image'),
         }
 
         // Generate the URL for the uploaded file
-        const imageUrl = `/uploads/${req.file.filename}`;
+        const imageUrl = `/api/uploads/${req.file.filename}`;
         res.json({ imageUrl });
     } catch (err: any) {
         res.status(500).json({ message: err.message });

@@ -30,8 +30,8 @@ app.use('/api/config', configRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/upload', uploadRoutes);
 
-// Serving uploaded files
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// Serving uploaded files (using /api/uploads so it works seamlessly behind Nginx)
+app.use('/api/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.get('/', (req: Request, res: Response) => {
     res.send('BLOOMME Backend is running!');

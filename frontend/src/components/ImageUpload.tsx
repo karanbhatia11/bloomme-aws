@@ -11,7 +11,7 @@ interface ImageUploadProps {
 const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange, label }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [uploading, setUploading] = useState(false);
-    const [mode, setMode] = useState<'upload' | 'url'>(value && !value.startsWith('/uploads/') ? 'url' : 'upload');
+    const [mode, setMode] = useState<'upload' | 'url'>(value && !value.includes('/uploads/') ? 'url' : 'upload');
 
     const handleFile = async (file: File) => {
         if (!file.type.startsWith('image/')) {
