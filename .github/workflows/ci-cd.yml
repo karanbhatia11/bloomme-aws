@@ -1,0 +1,62 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: Test & Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: phoolpatte_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # Backend Tests
+      - name: Install backend dependencies
+        run: cd backend && npm install
+
+      - name: Run backend tests
+        run: cd backend && npm test
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/phoolpatte_test
+          NODE_ENV: test
+
+      # Frontend Tests
+      - name: Install frontend dependencies
+        run: cd frontend && npm install
+
+      - name: Run frontend tests
+        run: cd frontend && npm test
+
+      - name: Build frontend
+        run: cd frontend && npm run build
+
+      - name: Build backend
+        run: cd backend && npm run build
+
+      - name: ✅ All Tests Passed
+        run: echo "Ready for manual deployment via Claude Code!"
