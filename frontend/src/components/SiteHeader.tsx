@@ -69,15 +69,25 @@ const SiteHeader = () => {
                     </div>
                 )}
 
+                {/* Navigation Links - Hidden on landing page to give more space to ticker */}
+                {!isLandingPage && (
+                    <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', flex: 1 }}>
+                        <Link to="/plans" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}>Plans</Link>
+                        <Link to="/addons" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}>Add-ons</Link>
+                    </div>
+                )}
+
                 <div className="nav-links">
                     {user ? (
-                        <Link to={user.role === 'admin' ? '/admin' : '/dashboard'} className="btn-secondary">
+                        <Link to={user.role === 'admin' ? '/admin' : '/dashboard'} className="btn-secondary" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}>
                             Dashboard
                         </Link>
                     ) : (
-                        <Link to="/login" className="login-link">Login</Link>
+                        <Link to="/login" className="login-link" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}>Login</Link>
                     )}
-                    <Link to="/signup" className="btn btn-gold-small">Join Now</Link>
+                    <Link to={user ? '/plans' : '/signup'} className="btn btn-gold-small">
+                        {user ? 'New Order' : 'Join Now'}
+                    </Link>
                 </div>
             </nav>
         </header>

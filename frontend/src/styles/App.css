@@ -235,9 +235,69 @@ a { color: var(--primary); text-decoration: none; }
   padding: 4px;
 }
 
-/* Legacy nav classes compatibility */
+/* Navbar - Sticky Header */
 .nav-sticky {
-  display: none; /* replaced by nav-main */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--maroon);
+  padding: 0.75rem 3%;
+  gap: 2rem;
+  flex-wrap: wrap;
+  min-height: 60px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-sticky .logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-sticky .logo img {
+  height: 45px;
+  object-fit: contain;
+}
+
+.nav-sticky .ticker-wrapper {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-sticky .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.nav-sticky .login-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-sticky .login-link:hover {
+  color: var(--gold);
+}
+
+.nav-sticky .btn-gold-small {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--light-gold);
+  color: var(--maroon);
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.nav-sticky .btn-gold-small:hover {
+  background: #D4AF37;
+  transform: translateY(-2px);
 }
 
 .logo img { height: 50px; object-fit: contain; }
