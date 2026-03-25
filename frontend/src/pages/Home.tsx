@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Truck, Package, Mail, MapPin, ChevronRight, Flower2, Sparkles, Heart } from 'lucide-react';
+import { CheckCircle, Truck, Package, Mail, MapPin, ChevronRight, Flower2 } from 'lucide-react';
 import api from '../api/axios';
 import SiteStatusModal from '../components/SiteStatusModal';
 import { getSiteStatus, getPlans } from '../api/config';
@@ -36,13 +36,6 @@ const Home = () => {
             setNewsletterEmail('');
         } catch {
             setNewsletterStatus('error');
-        }
-    };
-
-    const handleEntryClick = (e: React.MouseEvent) => {
-        if (isComingSoon) {
-            e.preventDefault();
-            setShowModal(true);
         }
     };
 

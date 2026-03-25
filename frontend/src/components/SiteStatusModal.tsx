@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, X, Hammer, Flower, Bell } from 'lucide-react';
+import { X, Hammer, Flower, Bell } from 'lucide-react';
 
 interface SiteStatusModalProps {
     isOpen: boolean;

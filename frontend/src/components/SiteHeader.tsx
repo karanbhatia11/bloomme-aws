@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { getSiteStatus } from '../api/config';
-import { Sparkles, Hammer, Info, Flower2, Heart } from 'lucide-react';
+import { Sparkles, Hammer, Flower2, Heart } from 'lucide-react';
 
 const SiteHeader = () => {
     const [siteStatus, setSiteStatus] = useState<'coming_soon' | 'maintenance' | 'none'>('none');
-    const navigate = useNavigate();
     const location = useLocation();
     const user = JSON.parse(localStorage.getItem('user') || 'null');
 

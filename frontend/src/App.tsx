@@ -13,6 +13,7 @@ import AdminPanel from './pages/AdminPanel';
 import Legal from './pages/Legal';
 import SiteFooter from './components/SiteFooter';
 import SiteHeader from './components/SiteHeader';
+import FlowerShower from './components/FlowerShower';
 import './styles/App.css';
 
 const AdminRoute = ({ children }: { children: React.ReactNode }) => {
@@ -28,6 +29,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <FlowerShower />
         <SiteHeader />
         <Routes>
           <Route path="/" element={<Home />} />

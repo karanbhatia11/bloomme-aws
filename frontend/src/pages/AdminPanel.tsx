@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Users,
     Calendar,
@@ -8,11 +8,7 @@ import {
     LogOut,
     TrendingUp,
     Plus,
-    Image as ImageIcon,
-    ExternalLink,
-    Search,
-    ToggleLeft,
-    ToggleRight
+    Search
 } from 'lucide-react';
 import api from '../api/axios';
 import { useNavigate } from 'react-router-dom';
