@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Truck, Package, Mail, MapPin, ChevronRight, Flower2 } from 'lucide-react';
+import { CheckCircle, Truck, Package, Mail, MapPin, Flower2 } from 'lucide-react';
 import api from '../api/axios';
 import SiteStatusModal from '../components/SiteStatusModal';
 import { getSiteStatus, getPlans } from '../api/config';
@@ -42,17 +42,103 @@ const Home = () => {
     return (
         <div className="home">
             {/* HERO SECTION */}
-            <header className="hero">
-                <div className="hero-content fade-in">
-                    <div className="tagline">Faith. Freshness. On Time.</div>
-                    <h1>Daily Puja Flowers Delivered Fresh</h1>
-                    <p>Experience the divine essence of hand-picked, traditional Indian flowers delivered to your home every morning before your sunrise prayers.</p>
-                    <div className="hero-price-badge">
-                        Monthly Subscriptions Starting ₹49 /day
+            <header className="hero" style={{
+                backgroundImage: 'linear-gradient(135deg, rgba(61, 31, 11, 0.6), rgba(61, 31, 11, 0.4)), url(/images/hero.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundAttachment: 'fixed',
+                minHeight: '90vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative'
+            }}>
+                <div className="hero-content fade-in" style={{ maxWidth: '900px', textAlign: 'center', zIndex: 2 }}>
+                    {/* Sanskrit Shloka */}
+                    <div style={{
+                        fontSize: '1.3rem',
+                        fontStyle: 'italic',
+                        color: 'var(--gold)',
+                        marginBottom: '0.5rem',
+                        fontFamily: 'var(--font-serif)',
+                        letterSpacing: '0.05em'
+                    }}>
+                        पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।
                     </div>
-                    <Link to="/signup" className="btn btn-gold">
-                        Start Your Subscription <ChevronRight size={20} />
+
+                    {/* Hindi Translation */}
+                    <div style={{
+                        fontSize: '1rem',
+                        color: 'var(--gold-light)',
+                        marginBottom: '2rem',
+                        opacity: 0.95
+                    }}>
+                        "जो कोई भी भक्ति से मेरे को पत्र, पुष्प, फल और जल अर्पित करता है।"
+                    </div>
+
+                    {/* Main Headline */}
+                    <h1 style={{
+                        fontSize: '3.5rem',
+                        fontWeight: 800,
+                        marginBottom: '1.5rem',
+                        color: 'var(--white)',
+                        lineHeight: '1.2',
+                        textShadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
+                    }}>
+                        Daily Fresh Puja Flowers & Essentials Delivered at Your Doorstep
+                    </h1>
+
+                    {/* Subheading */}
+                    <p style={{
+                        fontSize: '1.4rem',
+                        color: 'rgba(255, 255, 255, 0.95)',
+                        marginBottom: '2.5rem',
+                        maxWidth: '800px',
+                        margin: '0 auto 2.5rem',
+                        lineHeight: '1.6'
+                    }}>
+                        Fresh puja flowers & essentials delivered before sunrise - every single day.
+                    </p>
+
+                    {/* CTA Button */}
+                    <Link to="/plans" style={{
+                        display: 'inline-block',
+                        padding: '1.2rem 3rem',
+                        background: 'var(--light-gold)',
+                        color: 'var(--maroon)',
+                        textDecoration: 'none',
+                        borderRadius: '12px',
+                        fontWeight: 'bold',
+                        fontSize: '1.1rem',
+                        marginBottom: '2.5rem',
+                        transition: 'all 0.3s',
+                        boxShadow: '0 8px 30px rgba(201, 152, 39, 0.3)',
+                        textAlign: 'center',
+                        cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                        (e.target as HTMLElement).style.transform = 'translateY(-3px)';
+                        (e.target as HTMLElement).style.boxShadow = '0 12px 40px rgba(201, 152, 39, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                        (e.target as HTMLElement).style.transform = 'translateY(0)';
+                        (e.target as HTMLElement).style.boxShadow = '0 8px 30px rgba(201, 152, 39, 0.3)';
+                    }}>
+                        YOUR DAILY DEVOTION, STARTING FROM ONLY ₹49/DAY
                     </Link>
+
+                    {/* Social Proof */}
+                    <div style={{
+                        fontSize: '1.1rem',
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.75rem'
+                    }}>
+                        <Flower2 size={20} color="var(--gold)" />
+                        <span>Join <strong>100 families</strong> who start every morning with Bloomme</span>
+                    </div>
                 </div>
             </header>
 
