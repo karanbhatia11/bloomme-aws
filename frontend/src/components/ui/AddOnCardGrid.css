@@ -1,0 +1,68 @@
+.addon-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.addon-card-grid__item {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  border: 2px solid var(--color-neutral-light-gray);
+  transition: all 0.2s ease;
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addon-card-grid__item:hover {
+  border-color: var(--color-primary-warm-copper);
+}
+
+.addon-card-grid__item--selected {
+  border-color: var(--color-primary-sacred-gold);
+  background-color: rgba(196, 160, 82, 0.05);
+  box-shadow: var(--shadow-md);
+}
+
+.addon-card-grid__icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
+.addon-card-grid__name {
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-base);
+}
+
+.addon-card-grid__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.addon-card-grid__price {
+  margin-bottom: var(--spacing-md);
+}
+
+.addon-card-grid__selector {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .addon-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .addon-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

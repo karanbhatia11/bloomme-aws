@@ -1,0 +1,206 @@
+/* Plan Card */
+.plan-card {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  border: 2px solid var(--color-neutral-light-gray);
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.plan-card--clickable {
+  cursor: pointer;
+}
+
+.plan-card--clickable:hover {
+  border-color: var(--color-primary-sacred-gold);
+}
+
+.plan-card--selected {
+  border-color: var(--color-primary-sacred-gold);
+  background-color: rgba(196, 160, 82, 0.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.plan-card--highlighted {
+  border: 2px solid var(--color-primary-warm-copper);
+  box-shadow: 0 0 0 2px var(--color-primary-sacred-gold);
+}
+
+.plan-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.plan-card__name {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary-deep-brown);
+  margin: 0;
+  flex: 1;
+}
+
+.plan-card__badge {
+  background-color: var(--color-warning);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: var(--spacing-md);
+}
+
+.plan-card__price {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-primary-warm-copper);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.plan-card__price-per-day {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.plan-card__description {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-dark-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+.plan-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-card__feature {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-dark-gray);
+  margin: var(--spacing-sm) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.plan-card__selected-indicator {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary-sacred-gold);
+  margin-top: var(--spacing-md);
+}
+
+/* Add-on Card */
+.addon-card {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  border: 2px solid var(--color-neutral-light-gray);
+  transition: all 0.2s ease;
+  background-color: white;
+  text-align: center;
+}
+
+.addon-card--clickable {
+  cursor: pointer;
+}
+
+.addon-card--clickable:hover {
+  border-color: var(--color-primary-warm-copper);
+}
+
+.addon-card--selected {
+  border-color: var(--color-primary-sacred-gold);
+  background-color: rgba(196, 160, 82, 0.05);
+}
+
+.addon-card__icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
+.addon-card__name {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-base);
+}
+
+.addon-card__description {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin-bottom: var(--spacing-sm);
+}
+
+.addon-card__price {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary-warm-copper);
+}
+
+.addon-card__quantity {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin-top: var(--spacing-sm);
+}
+
+/* Order Card */
+.order-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-neutral-light-gray);
+}
+
+.order-card__content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.order-card__icon {
+  font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-card__text {
+  flex: 1;
+}
+
+.order-card__title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.order-card__description {
+  font-family: 'Lora', serif;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin: 0;
+}
+
+.order-card__amount {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  margin: 0;
+}

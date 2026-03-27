@@ -1,0 +1,88 @@
+.calendar {
+  width: 100%;
+  background-color: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-neutral-light-gray);
+}
+
+.calendar__header {
+  margin-bottom: var(--spacing-md);
+}
+
+.calendar__title {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--font-size-lg);
+  color: var(--color-primary-deep-brown);
+  text-align: center;
+  margin: 0;
+}
+
+.calendar__day-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.calendar__day-header {
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-neutral-dark-gray);
+  padding: var(--spacing-sm);
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.calendar__day {
+  aspect-ratio: 1;
+  border-radius: var(--border-radius-md);
+  border: none;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.calendar__day--empty {
+  cursor: default;
+  pointer-events: none;
+}
+
+.calendar__day--selected {
+  background-color: var(--color-primary-sacred-gold);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.calendar__day--available {
+  background-color: var(--color-neutral-cream);
+  color: var(--color-primary-deep-brown);
+}
+
+.calendar__day--available:hover {
+  background-color: var(--color-primary-sacred-gold);
+  color: white;
+}
+
+.calendar__day--disabled {
+  background-color: var(--color-neutral-light-gray);
+  color: var(--color-neutral-dark-gray);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendar__count {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-brown);
+  margin: 0;
+  font-weight: 500;
+}

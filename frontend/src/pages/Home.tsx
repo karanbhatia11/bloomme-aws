@@ -101,7 +101,7 @@ const Home = () => {
                     </p>
 
                     {/* CTA Button */}
-                    <Link to="/plans" style={{
+                    <Link to="/checkout/plans" style={{
                         display: 'inline-block',
                         padding: '1.2rem 3rem',
                         background: 'var(--light-gold)',
@@ -223,7 +223,7 @@ const Home = () => {
                                     ))}
                                 </ul>
                                 <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>₹{plan.price}/mo</div>
-                                <Link to="/signup" className={`btn ${plan.is_popular ? 'btn-gold' : ''}`} style={{ width: '100%' }}>View Plan</Link>
+                                <Link to="/checkout/plans" className={`btn ${plan.is_popular ? 'btn-gold' : ''}`} style={{ width: '100%' }}>View Plan</Link>
                             </div>
                         </div>
                     ))}

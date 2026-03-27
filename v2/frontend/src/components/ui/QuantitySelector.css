@@ -1,0 +1,38 @@
+.quantity-selector-wrapper {
+  width: 100%;
+}
+
+.quantity-selector__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-primary-deep-brown);
+  margin-bottom: var(--spacing-sm);
+}
+
+.quantity-selector__container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  border: 1px solid var(--color-neutral-light-gray);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm);
+  width: fit-content;
+  background-color: white;
+}
+
+.quantity-selector__btn {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  min-width: 40px;
+  padding: 0;
+}
+
+.quantity-selector__value {
+  width: 48px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  font-size: var(--font-size-lg);
+}

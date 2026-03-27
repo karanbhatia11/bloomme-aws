@@ -1,0 +1,14 @@
+.checkout-progress {
+  width: 100%;
+}
+
+.checkout-progress__details {
+  margin-top: var(--spacing-lg);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .checkout-progress__details {
+    display: block;
+  }
+}

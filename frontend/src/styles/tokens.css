@@ -1,0 +1,63 @@
+:root {
+  /* COLORS - Primary */
+  --color-primary-sacred-gold: #C4A052;
+  --color-primary-warm-copper: #D97E3A;
+  --color-primary-deep-brown: #3D2817;
+
+  /* COLORS - Secondary */
+  --color-accent-soft-pink: #E8B4C8;
+  --color-accent-sage-green: #A8B8A0;
+  --color-accent-rose-red: #C1546F;
+
+  /* COLORS - Neutral */
+  --color-neutral-off-white: #FEFBF8;
+  --color-neutral-cream: #F5F1ED;
+  --color-neutral-light-gray: #E8E3DE;
+  --color-neutral-dark-gray: #5A5249;
+  --color-neutral-black: #1A1410;
+
+  /* COLORS - Semantic */
+  --color-success: #639922;
+  --color-error: #A32D2D;
+  --color-warning: #BA7517;
+  --color-info: #185FA5;
+
+  /* SPACING - 8px Grid */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* BORDER RADIUS */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* SHADOWS */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+  /* FONT SIZES */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 48px;
+
+  /* LINE HEIGHTS */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  /* Z-INDEX */
+  --z-sticky: 10;
+  --z-dropdown: 15;
+  --z-modal: 20;
+}

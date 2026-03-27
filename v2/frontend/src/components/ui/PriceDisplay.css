@@ -1,0 +1,36 @@
+.price-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-display__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin: 0 0 var(--spacing-sm) 0;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.price-display__amount {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  font-family: 'Lora', serif;
+}
+
+.price-display__amount--sm {
+  font-size: var(--font-size-sm);
+}
+
+.price-display__amount--md {
+  font-size: var(--font-size-lg);
+}
+
+.price-display__amount--lg {
+  font-size: var(--font-size-2xl);
+}
+
+.price-display__amount--strikethrough {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

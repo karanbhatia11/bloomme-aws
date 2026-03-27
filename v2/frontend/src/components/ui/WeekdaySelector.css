@@ -1,0 +1,56 @@
+.weekday-selector-wrapper {
+  width: 100%;
+}
+
+.weekday-selector__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-primary-deep-brown);
+  margin-bottom: var(--spacing-md);
+}
+
+.weekday-selector__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.weekday-selector__btn {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--color-neutral-light-gray);
+  background-color: var(--color-neutral-cream);
+  color: var(--color-primary-deep-brown);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.weekday-selector__btn:hover:not(.weekday-selector__btn--selected) {
+  border-color: var(--color-primary-sacred-gold);
+}
+
+.weekday-selector__btn--selected {
+  background-color: var(--color-primary-sacred-gold);
+  color: white;
+  border-color: var(--color-primary-sacred-gold);
+  box-shadow: var(--shadow-md);
+}
+
+.weekday-selector__count {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-deep-brown);
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .weekday-selector__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

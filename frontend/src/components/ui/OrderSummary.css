@@ -1,0 +1,117 @@
+.order-summary {
+  background-color: white;
+  border: 1px solid var(--color-neutral-light-gray);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  position: sticky;
+  top: var(--spacing-lg);
+}
+
+.order-summary__title {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--font-size-xl);
+  color: var(--color-primary-deep-brown);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.order-summary__section {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-neutral-light-gray);
+}
+
+.order-summary__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+}
+
+.order-summary__item:last-child {
+  margin-bottom: 0;
+}
+
+.order-summary__item--addon {
+  font-size: var(--font-size-sm);
+}
+
+.order-summary__item-content {
+  flex: 1;
+}
+
+.order-summary__item-title {
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.order-summary__item-description {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+.order-summary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-neutral-light-gray);
+  font-size: var(--font-size-sm);
+}
+
+.order-summary__label {
+  color: var(--color-neutral-dark-gray);
+}
+
+.order-summary__value {
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+}
+
+.order-summary__row--success {
+  color: var(--color-success);
+}
+
+.order-summary__row--success .order-summary__value {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.order-summary__promo-section {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-neutral-light-gray);
+}
+
+.order-summary__promo-applied {
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+.order-summary__total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-lg);
+}
+
+.order-summary__total-label {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--font-size-lg);
+  color: var(--color-primary-deep-brown);
+}
+
+.order-summary__total-price {
+  color: var(--color-primary-sacred-gold);
+}
+
+@media (max-width: 768px) {
+  .order-summary {
+    position: relative;
+    top: auto;
+  }
+}

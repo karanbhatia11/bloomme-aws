@@ -1,0 +1,92 @@
+.stepper {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.stepper--horizontal {
+  flex-direction: row;
+}
+
+.stepper--vertical {
+  flex-direction: column;
+}
+
+.stepper__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  position: relative;
+}
+
+.stepper__circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-md);
+}
+
+.stepper__circle:disabled {
+  cursor: default;
+}
+
+.stepper__circle--completed {
+  background-color: var(--color-primary-sacred-gold);
+}
+
+.stepper__circle--active {
+  background-color: var(--color-primary-warm-copper);
+  box-shadow: 0 0 0 2px var(--color-primary-sacred-gold);
+}
+
+.stepper__circle--pending {
+  background-color: var(--color-neutral-light-gray);
+  color: var(--color-neutral-dark-gray);
+}
+
+.stepper__info {
+  flex: 1;
+  padding-top: var(--spacing-sm);
+}
+
+.stepper__title {
+  font-weight: 600;
+  color: var(--color-primary-deep-brown);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.stepper__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-dark-gray);
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+.stepper__connector {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background-color: var(--color-neutral-light-gray);
+  left: 19px;
+  top: 40px;
+  transition: background-color 0.2s ease;
+}
+
+.stepper__connector--completed {
+  background-color: var(--color-primary-sacred-gold);
+}
+
+.stepper--horizontal .stepper__connector {
+  width: 20px;
+  height: 2px;
+  left: 40px;
+  top: 19px;
+}
